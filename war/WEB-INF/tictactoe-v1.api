@@ -1,0 +1,241 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://app405cloudgame.appspot.com/_ah/api",
+  "name" : "tictactoe",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://app405cloudgame.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "tictactoe.scores.insert" : {
+      "path" : "score",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com" ],
+      "clientIds" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com", "replace this with your Android client ID", "replace this with your iOS client ID" ],
+      "rosyMethod" : "com.google.devrel.samples.ttt.spi.ScoresV1.insert",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tictactoe.scores.list" : {
+      "path" : "score",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com" ],
+      "clientIds" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com", "replace this with your Android client ID", "replace this with your iOS client ID" ],
+      "rosyMethod" : "com.google.devrel.samples.ttt.spi.ScoresV1.list",
+      "request" : {
+        "parameters" : {
+          "limit" : {
+            "type" : "string",
+            "required" : false
+          },
+          "order" : {
+            "type" : "string",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tictactoe.board.getboard" : {
+      "path" : "getboard",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com" ],
+      "clientIds" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com", "replace this with your Android client ID", "replace this with your iOS client ID" ],
+      "rosyMethod" : "com.google.devrel.samples.ttt.spi.BoardV1.getBoard",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tictactoe.board.getmove" : {
+      "path" : "getmove",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com" ],
+      "clientIds" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com", "replace this with your Android client ID", "replace this with your iOS client ID" ],
+      "rosyMethod" : "com.google.devrel.samples.ttt.spi.BoardV1.getmove",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int32",
+            "required" : true
+          },
+          "row" : {
+            "type" : "int32",
+            "required" : true
+          },
+          "col" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tictactoe.board.checkForVictory" : {
+      "path" : "checkForVictory",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com" ],
+      "clientIds" : [ "310847526935-r758bkquplt27bk4sb820mpg150rdmib.apps.googleusercontent.com", "replace this with your Android client ID", "replace this with your iOS client ID" ],
+      "rosyMethod" : "com.google.devrel.samples.ttt.spi.BoardV1.checkForVictory",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Score" : {
+        "id" : "Score",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "player" : {
+            "$ref" : "User"
+          },
+          "outcome" : {
+            "type" : "string"
+          },
+          "played" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "User" : {
+        "id" : "User",
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string"
+          },
+          "authDomain" : {
+            "type" : "string"
+          },
+          "userId" : {
+            "type" : "string"
+          },
+          "federatedIdentity" : {
+            "type" : "string"
+          },
+          "nickname" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ScoreCollection" : {
+        "id" : "ScoreCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Score"
+            }
+          }
+        }
+      },
+      "Board" : {
+        "id" : "Board",
+        "type" : "object",
+        "properties" : {
+          "state" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Status" : {
+        "id" : "Status",
+        "type" : "object",
+        "properties" : {
+          "status" : {
+            "type" : "integer"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.google.devrel.samples.ttt.spi.ScoresV1.insert" : {
+        "request" : {
+          "$ref" : "Score"
+        },
+        "response" : {
+          "$ref" : "Score"
+        }
+      },
+      "com.google.devrel.samples.ttt.spi.ScoresV1.list" : {
+        "response" : {
+          "$ref" : "ScoreCollection"
+        }
+      },
+      "com.google.devrel.samples.ttt.spi.BoardV1.getBoard" : {
+        "response" : {
+          "$ref" : "Board"
+        }
+      },
+      "com.google.devrel.samples.ttt.spi.BoardV1.getmove" : {
+        "request" : {
+          "$ref" : "Board"
+        },
+        "response" : {
+          "$ref" : "Board"
+        }
+      },
+      "com.google.devrel.samples.ttt.spi.BoardV1.checkForVictory" : {
+        "request" : {
+          "$ref" : "Board"
+        },
+        "response" : {
+          "$ref" : "Status"
+        }
+      }
+    }
+  }
+}
