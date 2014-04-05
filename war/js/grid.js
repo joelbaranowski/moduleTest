@@ -236,7 +236,6 @@ var GameView = Class.extend({
 	},
 
 	moveToPosition: function(newX, newY) {
-		var tile = this.tiles[newX * this.numberSquaresOnXAxis + newY];
 		this.model.clickSquare(newY, newY);
 	},
 

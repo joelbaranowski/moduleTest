@@ -58,7 +58,8 @@ public class BoardV1 {
 	ArrayList<Cell> unoccupiedCells = new ArrayList<Cell>();
 	for (Cell cell : cells ) {
 		System.out.println("row: " + row + " | cell.x: " + cell.x);
-		if(row == cell.x && col == cell.y){
+		if(row == cell.x && col == cell.y && row != 100 && col != 100){
+			System.out.println("updated 1");
 			cell.val += (id+1)*10;
 			CellContainer updateContainer = new CellContainer(cells);
 			Board updated = new Board(CellContainer.toJson(updateContainer));
@@ -73,6 +74,7 @@ public class BoardV1 {
 	if(id == 0)
 		System.out.println("what");
 	Random randomG = new Random();
+	System.out.println("updated 2");
     Cell randomfreeCell = unoccupiedCells.get(randomG.nextInt(unoccupiedCells.size()));
 	randomfreeCell.val = randomfreeCell.val + (id+1)*10;
 	

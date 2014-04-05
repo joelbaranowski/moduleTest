@@ -72,6 +72,7 @@ flappyMMCJ.model.clickSquare = function(x, y) {
 					gameView.updateBoard(board);
 					gapi.client.tictactoe.board.checkForVictory(board).execute(
 						function(resp) {
+							console.log("in resp:" + JSON.stringify(board));
 							var status = JSON.parse(resp.status);
 							if (status == flappyMMCJ.model.NOT_DONE) {
 								flappyMMCJ.model.getComputerMove(JSON.stringify(board));
